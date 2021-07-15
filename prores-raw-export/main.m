@@ -39,8 +39,8 @@ int main(int argc, const char * argv[]) {
         NSDictionary *proResDict = @{
             AVVideoAllowWideColorKey: @(YES),
             (NSString*)kCVPixelBufferPixelFormatTypeKey: @(kCVPixelFormatType_16VersatileBayer),
-            (NSString*)kCVPixelBufferIOSurfacePropertiesKey: @{},
-            (NSString*)kCVPixelBufferMetalCompatibilityKey: @(YES),
+//            (NSString*)kCVPixelBufferIOSurfacePropertiesKey: @{},
+//            (NSString*)kCVPixelBufferMetalCompatibilityKey: @(YES),
             AVVideoDecompressionPropertiesKey:@{@"EnableLoggingInProResRAW": @(YES)}
         };
         
@@ -82,6 +82,8 @@ int main(int argc, const char * argv[]) {
                 } else {
                     NSLog(@"%@", path);
                 }
+                
+                CVPixelBufferUnlockBaseAddress(imageBuffer, 0);
                 
                 frameNumber++;
 
