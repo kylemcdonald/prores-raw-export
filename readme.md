@@ -25,6 +25,16 @@ For example, for videos recorded with the Sony a7S III and the Ninja V, draw a .
 
 After loading the image you will want to crop out noise (metadata?) on the right side, as the proper width is 4264 pixels.
 
+## Opening Raw Files in Python
+
+```python
+def load_prores_raw(fn):
+    height, width = 2408, 4288
+    buffer = np.fromfile(fn, dtype=np.uint16, count=width*height)
+    img = buffer.reshape(height, width)[:,:4264]
+    return img
+```
+
 ## Credit
 
 Thanks to [Anton Marini](https://twitter.com/_vade) for providing the original code.
